@@ -1,22 +1,47 @@
 package mvc.entity;
 
-import java.sql.Date;
 
+
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
 public class CustomerDetail
 {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
-	private Date date;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="date_of_birth")
+	private Date dateOfBirth;
+	
+	@Column(name="phone_number")
 	private String phoneNumber;
+	
+	@Column(name="city")
 	private String city;
+	
+	@OneToOne(mappedBy="customerDetail", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Customer customer;
 	
 	public CustomerDetail()
 	{
 	}
 
-	public CustomerDetail(Date date, String phoneNumber, String city)
+	public CustomerDetail(Date dateOfBirth, String phoneNumber, String city)
 	{
-		this.date = date;
+		this.dateOfBirth = dateOfBirth;
 		this.phoneNumber = phoneNumber;
 		this.city = city;
 	}
@@ -26,9 +51,9 @@ public class CustomerDetail
 		return id;
 	}
 
-	public Date getDate()
+	public Date getDateOfBirth()
 	{
-		return date;
+		return dateOfBirth;
 	}
 
 	public String getPhoneNumber()
@@ -51,9 +76,9 @@ public class CustomerDetail
 		this.id = id;
 	}
 
-	public void setDate(Date date)
+	public void setDateOfBirth(Date dateOfBirth)
 	{
-		this.date = date;
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public void setPhoneNumber(String phoneNumber)
@@ -77,8 +102,8 @@ public class CustomerDetail
 		StringBuilder builder = new StringBuilder();
 		builder.append("CustomerDetail [id=");
 		builder.append(id);
-		builder.append(", date=");
-		builder.append(date);
+		builder.append(", date of birth=");
+		builder.append(dateOfBirth);
 		builder.append(", phoneNumber=");
 		builder.append(phoneNumber);
 		builder.append(", city=");
