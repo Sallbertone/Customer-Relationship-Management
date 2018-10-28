@@ -13,14 +13,28 @@
 <body>
 
 
-<section id="menu">
+<section id="viewtable">
 	<div class="container">
-		<br><br>
-		<a href="customer/list">Lista klientów</a>
-		<br><br>
-		<a href="customer/add">Dodaj klienta</a>
-		<br><br>
-
+		<div id="result">
+			<table>
+				<tr>
+					<th>FIRST NAME</th>
+					<th>LAST NAME</th>
+					<th>E-MAIL</th>
+				</tr>
+				
+				<c:forEach var="tempCustomer" items="${customers}">
+		
+				<tr>
+					<td> ${tempCustomer.firstName} </td>
+					<td> ${tempCustomer.lastName} </td>
+					<td> ${tempCustomer.email} </td>
+				</tr>
+		
+				</c:forEach>
+					
+			</table>
+		</div>
 	</div>
 </section>
 
