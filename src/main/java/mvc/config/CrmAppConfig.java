@@ -68,8 +68,8 @@ public class CrmAppConfig implements WebMvcConfigurer
 		}
 
 		// logging just to make sure we are reading the data
-		logger.info("jdbc.url=" + environment.getProperty("jdbc.url"));
-		logger.info("jdbc.user=" + environment.getProperty("jdbc.user"));
+		logger.info("==========>>>       jdbc.url=" + environment.getProperty("jdbc.url"));
+		logger.info("==========>>>       jdbc.user=" + environment.getProperty("jdbc.user"));
 
 		// set database connection props
 		myDataSource.setJdbcUrl(environment.getProperty("jdbc.url"));
