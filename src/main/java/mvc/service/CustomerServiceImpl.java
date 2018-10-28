@@ -1,44 +1,41 @@
-package mvc.dao;
+package mvc.service;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import mvc.dao.CustomerDAO;
 import mvc.entity.Customer;
 
-@Repository
-public class CustomerDAOImpl implements CustomerDAO
+@Service
+public class CustomerServiceImpl implements CustomerService
 {
 
+	private CustomerDAO customerDAO;
+	
+	
 	@Autowired
-	private SessionFactory sessionFactory;
-	
-	private Session getSession()
+	public CustomerServiceImpl(CustomerDAO customerDAO)
 	{
-		return sessionFactory.getCurrentSession();
+		this.customerDAO = customerDAO;
 	}
-	
+
 	
 	@Override
+	@Transactional
 	public List<Customer> listAllCustomers()
 	{
-
-		Query<Customer> query = getSession().createQuery("from Customer", Customer.class);
-		List<Customer> customers = query.getResultList();
-
-		return customers;
+		return customerDAO.listAllCustomers();
 	}
 
+	
 	@Override
 	public void saveOrUpdateCustomer(Customer customer)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -52,14 +49,14 @@ public class CustomerDAOImpl implements CustomerDAO
 	public void findCustomerById(int id)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteCustomer(int id)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

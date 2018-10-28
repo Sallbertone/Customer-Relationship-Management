@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.dao.CustomerDAO;
+import mvc.service.CustomerService;
 
 
 
@@ -13,7 +14,7 @@ import mvc.dao.CustomerDAO;
 public class IsItWorkongController
 {
 	@Autowired
-	CustomerDAO c;
+	CustomerService c;
 	
 	@RequestMapping("/")
 	public String start()
