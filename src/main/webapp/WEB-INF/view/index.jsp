@@ -13,7 +13,16 @@
 <body>
 
 
+<section id="menu">
+	<div class="container">
+		<br><br>
+		<a href="/listAllCustomers">Lista klientów</a>
+		<br><br>
+		<a href="/addCustomer">Dodaj klienta</a>
+		<br><br>
 
+	</div>
+</section>
 
 
 
