@@ -11,17 +11,12 @@ import mvc.service.CustomerService;
 
 
 @Controller
-public class IsItWorkongController
+public class HomeController
 {
-	@Autowired
-	CustomerService c;
 	
 	@RequestMapping("/")
-	public String start()
+	public String home()
 	{
-		
-		System.out.println(c.listAllCustomers().get(5).getCustomerDetail());
-		
 		return "index";
 	}
 }
