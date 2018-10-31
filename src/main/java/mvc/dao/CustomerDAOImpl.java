@@ -15,10 +15,20 @@ import mvc.entity.Customer;
 public class CustomerDAOImpl implements CustomerDAO
 {
 
-	@Autowired
+	
 	private SessionFactory sessionFactory;
 	
-	private Session getSession()
+	
+	@Autowired
+	public CustomerDAOImpl(SessionFactory sessionFactory)
+	{
+		this.sessionFactory = sessionFactory;
+	}
+
+
+	
+	
+	public Session getSession()
 	{
 		return sessionFactory.getCurrentSession();
 	}
