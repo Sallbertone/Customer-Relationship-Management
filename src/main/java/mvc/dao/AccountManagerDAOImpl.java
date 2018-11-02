@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mvc.entity.AccountManager;
-import mvc.entity.Customer;
+
 
 @Repository
 public class AccountManagerDAOImpl implements AccountManagerDAO
@@ -53,7 +53,7 @@ public class AccountManagerDAOImpl implements AccountManagerDAO
 	}
 
 	@Override
-	public void saveOrUpdateAccountManager(Customer customer)
+	public void saveOrUpdateAccountManager(AccountManager accountManager)
 	{
 		// TODO Auto-generated method stub
 

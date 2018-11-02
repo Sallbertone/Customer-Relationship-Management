@@ -24,6 +24,9 @@ public class CustomerController
 	@Autowired
 	AccountManagerService accountManagerService;
 	
+	@Autowired
+	LoyaltyProgramService LoyaltyProgramService;
+	
 	@GetMapping("/list")
 	public ModelAndView list()
 	{
@@ -43,6 +46,9 @@ public class CustomerController
 		
 		Map<Integer, String> accountManagersMap = new HashMap<>();
 		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
+		
+		Map<Integer, String> aloyaltyProgramsMap = new HashMap<>();
+		aloyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
 		
 		model.addObject("customer", customer);
 		model.addObject("accountManagersMap", accountManagersMap);
