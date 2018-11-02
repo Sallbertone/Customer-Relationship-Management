@@ -16,6 +16,12 @@ public class CustomerServiceImpl implements CustomerService
 	private CustomerDAO customerDAO;
 	
 	
+	
+	public CustomerServiceImpl()
+	{
+	}
+
+
 	@Autowired
 	public CustomerServiceImpl(CustomerDAO customerDAO)
 	{

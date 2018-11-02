@@ -27,15 +27,22 @@
 					<tbody>
 						<tr>
 							<td><label>Imię:</label></td>
-							<td><form:input path="firstName" />
+							<td><form:input path="firstName"/></td>
 						</tr>
 						<tr>
 							<td><label>Nazwisko:</label></td>
-							<td><form:input path="lastName" />
+							<td><form:input path="lastName" /></td>
 						</tr>
 						<tr>
 							<td><label>E-mail:</label></td>
-							<td><form:input path="email" />
+							<td><form:input path="email" /></td>
+						</tr>
+						<tr>
+							<td><label>Opiekun klienta:</label></td>
+							<td><form:select path="accountManager">
+									<form:option value="NONE" label="--- Wybierz ---"/>
+									<form:options items="${accountManagersMap}" />	
+								</form:select></td>
 						</tr>
 
 					</tbody>
