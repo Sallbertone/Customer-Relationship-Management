@@ -27,4 +27,13 @@ public class CustomerController
 		
 	}
 	
+	@GetMapping("/showAddForm")
+	public ModelAndView showAddForm()
+	{
+		Customer customer = new Customer();
+		
+		return new ModelAndView("customer/customer-form", "customer", customer);
+		
+	}
+	
 }

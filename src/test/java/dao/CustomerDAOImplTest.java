@@ -86,5 +86,12 @@ public class CustomerDAOImplTest
 		verify(query, times(2)).getResultList();
 		
 	}
+	
+	@Test
+	public void saveOrUpdateCustomer(Customer customer)
+	{
+		
+		
+	}
 
 }
