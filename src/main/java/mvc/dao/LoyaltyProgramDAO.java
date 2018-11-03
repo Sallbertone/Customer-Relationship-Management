@@ -5,7 +5,7 @@ import java.util.List;
 
 import mvc.entity.LoyaltyProgram;
 
-public interface LoyaltyProgramrDAO
+public interface LoyaltyProgramDAO
 {
 	public List<LoyaltyProgram> listAllLoyaltyPrograms();
 	

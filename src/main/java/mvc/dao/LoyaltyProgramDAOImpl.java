@@ -4,13 +4,15 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import mvc.entity.AccountManager;
 import mvc.entity.LoyaltyProgram;
 
 @Repository
-public class LoyaltyProgramDAOImpl implements LoyaltyProgramrDAO
+public class LoyaltyProgramDAOImpl implements LoyaltyProgramDAO
 {
 
 	private SessionFactory sessionFactory;
@@ -32,8 +34,10 @@ public class LoyaltyProgramDAOImpl implements LoyaltyProgramrDAO
 	@Override
 	public List<LoyaltyProgram> listAllLoyaltyPrograms()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Query<LoyaltyProgram> query = getSession().createQuery("from LoyaltyProgram", LoyaltyProgram.class);
+		List<LoyaltyProgram> loyaltyPrograms = query.getResultList();
+
+		return loyaltyPrograms;
 	}
 
 	@Override

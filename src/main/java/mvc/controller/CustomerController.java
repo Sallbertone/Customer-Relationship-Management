@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import mvc.entity.Customer;
 import mvc.service.AccountManagerService;
 import mvc.service.CustomerService;
+import mvc.service.LoyaltyProgramService;
 
 @Component
 @RequestMapping("/customer")
@@ -25,7 +26,7 @@ public class CustomerController
 	AccountManagerService accountManagerService;
 	
 	@Autowired
-	LoyaltyProgramService LoyaltyProgramService;
+	LoyaltyProgramService loyaltyProgramService;
 	
 	@GetMapping("/list")
 	public ModelAndView list()
@@ -47,11 +48,12 @@ public class CustomerController
 		Map<Integer, String> accountManagersMap = new HashMap<>();
 		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
 		
-		Map<Integer, String> aloyaltyProgramsMap = new HashMap<>();
-		aloyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
+		Map<Integer, String> loyaltyProgramsMap = new HashMap<>();
+		loyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
 		
 		model.addObject("customer", customer);
 		model.addObject("accountManagersMap", accountManagersMap);
+		model.addObject("loyaltyProgramsMap", loyaltyProgramsMap);
 		
 		
 		
