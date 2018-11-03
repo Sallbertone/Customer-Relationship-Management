@@ -20,58 +20,49 @@
 		<div id="result">
 
 
-<!--   change GET to POST after testing  -->
-			<form:form action="confirmCustomer" modelAttribute="customer"	method="GET">
-
 				<table>
 					<tbody>
 						<tr>
 							<td><label>Imię:</label></td>
-							<td><form:input path="firstName" /></td>
+							<td>${customer.firstName}</td>
 						</tr>
 						<tr>
 							<td><label>Nazwisko:</label></td>
-							<td><form:input path="lastName" /></td>
+							<td>${customer.lastName}</td>
 						</tr>
 						<tr>
 							<td><label>E-mail:</label></td>
-							<td><form:input path="email" /></td>
+							<td>${customer.email}</td>
 						</tr>
 						<tr>
 							<td><label>Miasto:</label></td>
-							<td><form:input path="customerDetail.city" /></td>
+							<td>${customer.customerDetail.city}</td>
 						</tr>
+ 						
 						<tr>
 							<td><label>Telefon:</label></td>
-							<td><form:input path="customerDetail.phoneNumber" /></td>
+							<td>${customer.customerDetail.phoneNumber}</td>
 						</tr>
-						
- 					
+	
 						<tr>
 							<td><label>Data urodzenia:</label></td>
-							<td><form:input path="customerDetail.dateOfBirth" /></td>
+							<td>${customer.customerDetail.dateOfBirth}</td>
 						</tr>
-
-<!--						
- 					<tr>
+						
+						
+<!--					
+						<tr>
 							<td><label>Opiekun klienta:</label></td>
-							<td><form:select path="accountManager">
-									<form:option value="NONE" label="--- Wybierz ---" />
-									<form:options items="${accountManagersMap}" />
-								</form:select></td>
+							<td>${customer.customerDetail.accountManager}</td>
 						</tr>
 
 						<tr>
 							<td><label>Program lojalnościowy:</label></td>
-							<td><form:checkboxes path="programs" items="${loyaltyProgramsMap}"/></td>
+							<td>${customer.customerDetail.programs}</td>
 						</tr>
 -->
 					</tbody>
 				</table>
-
-				<input type="submit" value="Dodaj" />
-
-			</form:form>
 
 
 		</div>

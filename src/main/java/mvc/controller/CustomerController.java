@@ -7,10 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.entity.Customer;
+import mvc.entity.CustomerDetail;
 import mvc.service.AccountManagerService;
 import mvc.service.CustomerService;
 import mvc.service.LoyaltyProgramService;
@@ -45,18 +47,32 @@ public class CustomerController
 		
 		Customer customer = new Customer();
 		
-		Map<Integer, String> accountManagersMap = new HashMap<>();
-		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
+		CustomerDetail details = new CustomerDetail();
 		
-		Map<Integer, String> loyaltyProgramsMap = new HashMap<>();
-		loyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
+		customer.setCustomerDetail(details);
+		
+//		Map<Integer, String> accountManagersMap = new HashMap<>();
+//		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
+		
+//		Map<Integer, String> loyaltyProgramsMap = new HashMap<>();
+//		loyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
 		
 		model.addObject("customer", customer);
-		model.addObject("accountManagersMap", accountManagersMap);
-		model.addObject("loyaltyProgramsMap", loyaltyProgramsMap);
+		model.addObject("details", details);
+//		model.addObject("accountManagersMap", accountManagersMap);
+//		model.addObject("loyaltyProgramsMap", loyaltyProgramsMap);
 		
 		
+		return model;
 		
+	}
+	
+	
+	@GetMapping("/confirmCustomer")
+	public ModelAndView confirmCustomer(@ModelAttribute("customer") Customer customer)
+	{
+		
+		ModelAndView model = new ModelAndView("customer/confirm-customer");
 		
 		return model;
 		
