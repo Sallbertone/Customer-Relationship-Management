@@ -48,14 +48,14 @@
 							<td><label>Data urodzenia:</label></td>
 							<td>${customer.customerDetail.dateOfBirth}</td>
 						</tr>
-						
-						
-<!--					
+	
+					
 						<tr>
 							<td><label>Opiekun klienta:</label></td>
 							<td>${customer.customerDetail.accountManager}</td>
 						</tr>
 
+<!--
 						<tr>
 							<td><label>Program lojalnościowy:</label></td>
 							<td>${customer.customerDetail.programs}</td>

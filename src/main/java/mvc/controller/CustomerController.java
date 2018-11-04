@@ -51,15 +51,15 @@ public class CustomerController
 		
 		customer.setCustomerDetail(details);
 		
-//		Map<Integer, String> accountManagersMap = new HashMap<>();
-//		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
+		Map<Integer, String> accountManagersMap = new HashMap<>();
+		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
 		
 //		Map<Integer, String> loyaltyProgramsMap = new HashMap<>();
 //		loyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
 		
 		model.addObject("customer", customer);
 		model.addObject("details", details);
-//		model.addObject("accountManagersMap", accountManagersMap);
+		model.addObject("accountManagersMap", accountManagersMap);
 //		model.addObject("loyaltyProgramsMap", loyaltyProgramsMap);
 		
 		

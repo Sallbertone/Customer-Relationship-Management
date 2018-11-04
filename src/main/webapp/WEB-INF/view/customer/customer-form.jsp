@@ -52,15 +52,16 @@
 							<td><form:input path="customerDetail.dateOfBirth" /></td>
 						</tr>
 
-<!--						
- 					<tr>
+						
+ 						<tr>
 							<td><label>Opiekun klienta:</label></td>
 							<td><form:select path="accountManager">
 									<form:option value="NONE" label="--- Wybierz ---" />
 									<form:options items="${accountManagersMap}" />
 								</form:select></td>
 						</tr>
-
+						
+<!--
 						<tr>
 							<td><label>Program lojalnościowy:</label></td>
 							<td><form:checkboxes path="programs" items="${loyaltyProgramsMap}"/></td>
