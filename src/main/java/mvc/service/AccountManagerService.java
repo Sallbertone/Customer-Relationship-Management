@@ -14,7 +14,7 @@ public interface AccountManagerService
 	
 	public List<AccountManager> findAccountManagers(String text);
 	
-	public void findAccountManagerById(int id);
+	public AccountManager findAccountManagerById(int id);
 	
 	public void deleteAccountManager(int id);
 	

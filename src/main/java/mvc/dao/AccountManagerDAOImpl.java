@@ -67,9 +67,9 @@ public class AccountManagerDAOImpl implements AccountManagerDAO
 	}
 
 	@Override
-	public void findAccountManagerById(int id)
+	public AccountManager findAccountManagerById(int id)
 	{
-		// TODO Auto-generated method stub
+		return getSession().get(AccountManager.class, id);		
 
 	}
 

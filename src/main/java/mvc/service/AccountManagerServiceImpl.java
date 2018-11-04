@@ -65,9 +65,10 @@ public class AccountManagerServiceImpl implements AccountManagerService
 	}
 
 	@Override
-	public void findAccountManagerById(int id)
+	public AccountManager findAccountManagerById(int id)
 	{
-		// TODO Auto-generated method stub
+		return accountManagerDAO.findAccountManagerById(id);
+		
 
 	}
 
