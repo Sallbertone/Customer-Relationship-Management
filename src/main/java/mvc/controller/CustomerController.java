@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import mvc.service.AccountManagerService;
 import mvc.service.CustomerService;
 import mvc.service.LoyaltyProgramService;
 
-@Component
+@Controller
 @RequestMapping("/customer")
 public class CustomerController
 {
@@ -46,23 +46,18 @@ public class CustomerController
 		ModelAndView model = new ModelAndView("customer/customer-form");
 		
 		Customer customer = new Customer();
-		
-		CustomerDetail details = new CustomerDetail();
-		
-		customer.setCustomerDetail(details);
+		model.addObject("customer", customer);
 		
 		Map<Integer, String> accountManagersMap = new HashMap<>();
 		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
+		model.addObject("accountManagersMap", accountManagersMap);
+		
+		
 		
 //		Map<Integer, String> loyaltyProgramsMap = new HashMap<>();
 //		loyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
-		
-		model.addObject("customer", customer);
-		model.addObject("details", details);
-		model.addObject("accountManagersMap", accountManagersMap);
 //		model.addObject("loyaltyProgramsMap", loyaltyProgramsMap);
-		
-		
+
 		return model;
 		
 	}

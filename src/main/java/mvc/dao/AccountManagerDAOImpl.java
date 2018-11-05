@@ -17,6 +17,7 @@ public class AccountManagerDAOImpl implements AccountManagerDAO
 	
 	private SessionFactory sessionFactory;
 	
+
 	
 	@Autowired
 	public AccountManagerDAOImpl(SessionFactory sessionFactory)
@@ -25,8 +26,6 @@ public class AccountManagerDAOImpl implements AccountManagerDAO
 	}
 
 
-	
-	
 	public Session getSession()
 	{
 		return sessionFactory.getCurrentSession();

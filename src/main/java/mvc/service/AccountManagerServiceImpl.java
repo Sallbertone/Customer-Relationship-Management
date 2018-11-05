@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import mvc.dao.AccountManagerDAO;
@@ -51,6 +50,7 @@ public class AccountManagerServiceImpl implements AccountManagerService
 	}
 
 	@Override
+	@Transactional
 	public void saveOrUpdateAccountManager(Customer customer)
 	{
 		// TODO Auto-generated method stub
@@ -58,6 +58,7 @@ public class AccountManagerServiceImpl implements AccountManagerService
 	}
 
 	@Override
+	@Transactional
 	public List<AccountManager> findAccountManagers(String text)
 	{
 		// TODO Auto-generated method stub
@@ -65,14 +66,15 @@ public class AccountManagerServiceImpl implements AccountManagerService
 	}
 
 	@Override
+	@Transactional
 	public AccountManager findAccountManagerById(int id)
 	{
 		return accountManagerDAO.findAccountManagerById(id);
-		
 
 	}
 
 	@Override
+	@Transactional
 	public void deleteAccountManager(int id)
 	{
 		// TODO Auto-generated method stub

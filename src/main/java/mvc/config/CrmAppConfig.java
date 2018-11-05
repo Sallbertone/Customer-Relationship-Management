@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -23,6 +24,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import mvc.converter.IdToAccountManagerConverter;
 
 @Configuration
 @EnableWebMvc
@@ -137,5 +140,11 @@ public class CrmAppConfig implements WebMvcConfigurer
 	{
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
+	
+	// add converters
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(new IdToAccountManagerConverter());
+    }
 
 }
