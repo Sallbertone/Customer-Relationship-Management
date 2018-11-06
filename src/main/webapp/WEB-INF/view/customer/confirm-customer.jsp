@@ -15,7 +15,7 @@
 <body>
 
 
-	<section id="viewcustomer">
+	<section id="viewtable">
 	<div class="container">
 		<div id="result">
 
@@ -48,11 +48,11 @@
 							<td><label>Data urodzenia:</label></td>
 							<td>${customer.customerDetail.dateOfBirth}</td>
 						</tr>
-						
-						
+	
+					
 						<tr>
 							<td><label>Opiekun klienta:</label></td>
-							<td>${customer.accountManager.firstName} ${customer.accountManager.lastName}</td>
+							<td>${customer.customerDetail.accountManager}</td>
 						</tr>
 
 
