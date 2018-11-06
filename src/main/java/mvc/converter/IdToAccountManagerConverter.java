@@ -1,6 +1,5 @@
 package mvc.converter;
 
-import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
@@ -18,27 +17,18 @@ public class IdToAccountManagerConverter implements Converter<String, AccountMan
 	@Autowired
 	AccountManagerService accountManagerService;
 	
-	private Logger logger = Logger.getLogger(getClass().getName());
-	
-	
     public IdToAccountManagerConverter()
     {
-        logger.info("==========>>>       IdToAccountManagerConverter picked up");
+
     }
 
 	@Override
 	public AccountManager convert(String stringId)
 	{
-		logger.info("==========>>>       convert method called");
 		
 		int id = Integer.valueOf(stringId);
 		
-		//this line is not working 
-		AccountManager am = accountManagerService.findAccountManagerById(id);
-		
-		logger.info("==========>>>       Account manager " + am + " successfully fetched" );
-		
-		return am;
+		return accountManagerService.findAccountManagerById(id);
 	}
 
 

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,7 +65,7 @@ public class CustomerController
 	
 	
 	@GetMapping("/confirmCustomer")
-	public ModelAndView confirmCustomer(@ModelAttribute("customer") Customer customer)
+	public ModelAndView confirmCustomer(@ModelAttribute("customer") Customer customer, BindingResult result)
 	{
 		
 		ModelAndView model = new ModelAndView("customer/confirm-customer");

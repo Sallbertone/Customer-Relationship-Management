@@ -38,7 +38,11 @@ public class CrmAppConfig implements WebMvcConfigurer
 	@Autowired
 	private Environment environment;
 
+	@Autowired
+	private IdToAccountManagerConverter idToAccountManagerConverter;
+
 	private Logger logger = Logger.getLogger(getClass().getName());
+
 
 	
 	@Bean
@@ -144,7 +148,7 @@ public class CrmAppConfig implements WebMvcConfigurer
 	// add converters
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new IdToAccountManagerConverter());
+        registry.addConverter(idToAccountManagerConverter);
     }
 
 }
