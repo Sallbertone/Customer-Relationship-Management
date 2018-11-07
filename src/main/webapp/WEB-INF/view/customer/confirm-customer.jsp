@@ -52,13 +52,20 @@
 					
 						<tr>
 							<td><label>Opiekun klienta:</label></td>
-							<td>${customer.customerDetail.accountManager}</td>
+							<td>${customer.accountManager.firstName} ${customer.accountManager.lastName}</td>
 						</tr>
 
 
 						<tr>
 							<td><label>Program lojalnościowy:</label></td>
-							<td>${customer.customerDetail.programs}</td>
+							<td><c:forEach items="${customer.programs}" var="program">
+						    		${program.title}   
+								</c:forEach>
+							</td>
+							
+							
+							
+							
 						</tr>
 
 					</tbody>

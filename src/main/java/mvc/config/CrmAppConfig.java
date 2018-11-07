@@ -26,6 +26,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import mvc.converter.IdToAccountManagerConverter;
+import mvc.converter.IdToLoyaltyProgramListConverter;
 
 @Configuration
 @EnableWebMvc
@@ -40,6 +41,10 @@ public class CrmAppConfig implements WebMvcConfigurer
 
 	@Autowired
 	private IdToAccountManagerConverter idToAccountManagerConverter;
+	
+	@Autowired
+	private IdToLoyaltyProgramListConverter idToLoyaltyProgramListConverter;
+	
 
 	private Logger logger = Logger.getLogger(getClass().getName());
 
@@ -149,6 +154,7 @@ public class CrmAppConfig implements WebMvcConfigurer
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(idToAccountManagerConverter);
+        registry.addConverter(idToLoyaltyProgramListConverter);
     }
 
 }

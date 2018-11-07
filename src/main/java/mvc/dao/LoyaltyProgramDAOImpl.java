@@ -55,9 +55,9 @@ public class LoyaltyProgramDAOImpl implements LoyaltyProgramDAO
 	}
 
 	@Override
-	public void findLoyaltyProgramById(int id)
+	public LoyaltyProgram findLoyaltyProgramById(int id)
 	{
-		// TODO Auto-generated method stub
+		return getSession().get(LoyaltyProgram.class, id);
 
 	}
 

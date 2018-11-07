@@ -13,7 +13,7 @@ public interface LoyaltyProgramDAO
 	
 	public List<LoyaltyProgram> findLoyaltyProgram(String text);
 	
-	public void findLoyaltyProgramById(int id);
+	public LoyaltyProgram findLoyaltyProgramById(int id);
 	
 	public void deleteLoyaltyProgram(int id);
 	
