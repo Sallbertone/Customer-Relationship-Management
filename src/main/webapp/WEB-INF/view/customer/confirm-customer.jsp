@@ -56,6 +56,11 @@
 						</tr>
 
 
+						<tr>
+							<td><label>Program lojalnościowy:</label></td>
+							<td>${customer.customerDetail.programs}</td>
+						</tr>
+
 					</tbody>
 				</table>
 

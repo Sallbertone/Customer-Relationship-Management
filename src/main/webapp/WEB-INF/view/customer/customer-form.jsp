@@ -61,7 +61,10 @@
 								</form:select></td>
 						</tr>
 						
-
+						<tr>
+							<td><label>Program lojalnościowy:</label></td>
+							<td><form:checkboxes path="programs" items="${loyaltyProgramsMap}"/></td>
+						</tr>
 
 
 					</tbody>

@@ -53,11 +53,9 @@ public class CustomerController
 		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
 		model.addObject("accountManagersMap", accountManagersMap);
 		
-		
-		
-//		Map<Integer, String> loyaltyProgramsMap = new HashMap<>();
-//		loyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
-//		model.addObject("loyaltyProgramsMap", loyaltyProgramsMap);
+		Map<Integer, String> loyaltyProgramsMap = new HashMap<>();
+		loyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
+		model.addObject("loyaltyProgramsMap", loyaltyProgramsMap);
 
 		return model;
 		
