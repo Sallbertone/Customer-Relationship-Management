@@ -26,6 +26,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import mvc.converter.IdToAccountManagerConverter;
+import mvc.converter.OlyOneIdToLoyaltyProgramListConverter;
 import mvc.converter.IdToLoyaltyProgramListConverter;
 
 @Configuration
@@ -45,6 +46,8 @@ public class CrmAppConfig implements WebMvcConfigurer
 	@Autowired
 	private IdToLoyaltyProgramListConverter idToLoyaltyProgramListConverter;
 	
+	@Autowired
+	private OlyOneIdToLoyaltyProgramListConverter olyOneIdToLoyaltyProgramListConverter;
 
 	private Logger logger = Logger.getLogger(getClass().getName());
 
@@ -155,6 +158,7 @@ public class CrmAppConfig implements WebMvcConfigurer
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(idToAccountManagerConverter);
         registry.addConverter(idToLoyaltyProgramListConverter);
+        registry.addConverter(olyOneIdToLoyaltyProgramListConverter);
     }
 
 }
