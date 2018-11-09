@@ -63,7 +63,7 @@ public class CustomerController
 	
 	
 	@GetMapping("/confirmCustomer")
-	public ModelAndView confirmCustomer(@ModelAttribute("customer") Customer customer, BindingResult result)
+	public ModelAndView saveAndConfirmCustomer(@ModelAttribute("customer") Customer customer, BindingResult result)
 	{
 		ModelAndView model = new ModelAndView("customer/confirm-customer");
 		
