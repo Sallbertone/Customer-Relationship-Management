@@ -48,7 +48,7 @@ public class CustomerDAOImpl implements CustomerDAO
 	@Override
 	public void saveOrUpdateCustomer(Customer customer)
 	{
-		// TODO Auto-generated method stub
+		getSession().save(customer);
 		
 	}
 

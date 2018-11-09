@@ -43,7 +43,7 @@ public class Customer
 	private AccountManager accountManager;
 	
 	@ManyToMany(fetch= FetchType.LAZY, cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinTable(name="course_student", 
+	@JoinTable(name="customer_loyalty_program", 
 				joinColumns=@JoinColumn(name="customer_id"),
 				inverseJoinColumns=@JoinColumn(name="loyalty_program_id"))
 	private List<LoyaltyProgram> programs;
