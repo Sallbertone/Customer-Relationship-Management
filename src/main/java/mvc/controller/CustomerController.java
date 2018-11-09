@@ -67,7 +67,7 @@ public class CustomerController
 	{
 		ModelAndView model = new ModelAndView("customer/confirm-customer");
 		
-		
+		customerService.saveOrUpdateCustomer(customer);
 		
 		return model;
 		
