@@ -28,7 +28,7 @@ public class LoyaltyProgram
 	private String title;
 	
 	@ManyToMany(fetch= FetchType.LAZY, cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinTable(name="course_student", 
+	@JoinTable(name="customer_loyalty_program", 
 				joinColumns=@JoinColumn(name="loyalty_program_id"),
 				inverseJoinColumns=@JoinColumn(name="customer_id"))
 	private List<Customer> customers;
