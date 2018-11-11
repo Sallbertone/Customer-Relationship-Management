@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.entity.Customer;
-import mvc.entity.CustomerDetail;
 import mvc.service.AccountManagerService;
 import mvc.service.CustomerService;
 import mvc.service.LoyaltyProgramService;

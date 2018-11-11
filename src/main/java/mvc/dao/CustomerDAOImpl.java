@@ -63,13 +63,13 @@ public class CustomerDAOImpl implements CustomerDAO
 	public void findCustomerById(int id)
 	{
 		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void deleteCustomer(int id)
 	{
-		// TODO Auto-generated method stub
+		getSession().createQuery("delete from Customer where id=" + id).executeUpdate();
 		
 	}
 
