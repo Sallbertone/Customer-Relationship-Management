@@ -65,7 +65,7 @@ public class CustomerServiceImpl implements CustomerService
 	@Transactional
 	public void deleteCustomer(int id)
 	{
-		// TODO Auto-generated method stub
+		customerDAO.deleteCustomer(id);
 
 	}
 

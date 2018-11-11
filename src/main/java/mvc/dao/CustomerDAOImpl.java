@@ -8,7 +8,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
 import mvc.entity.Customer;
 
 
@@ -63,14 +62,17 @@ public class CustomerDAOImpl implements CustomerDAO
 	public void findCustomerById(int id)
 	{
 		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void deleteCustomer(int id)
 	{
-		// TODO Auto-generated method stub
+		Query query = getSession().createQuery("delete from Customer where id=:theId");
 		
+		query.setParameter("theId", id);
+		
+		query.executeUpdate();
 	}
 
 }
