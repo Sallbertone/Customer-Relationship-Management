@@ -61,6 +61,18 @@
 						<td><label>Program lojalnościowy:</label></td>
 						<td><c:forEach items="${customer.programs}" var="program">
 						    		${program.title}   
+<<<<<<< HEAD
+								</c:forEach>
+							</td>
+							
+							
+							
+							
+						</tr>
+
+					</tbody>
+				</table>
+=======
 								</c:forEach></td>
 
 					</tr>
@@ -75,6 +87,7 @@
 				<input type="submit" value="Usuń klienta">
 			</form>
 
+>>>>>>> 30e3e32... Update Usuń klienta form on JSP
 
 
 		</div>
