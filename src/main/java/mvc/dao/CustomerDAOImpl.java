@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import mvc.entity.Customer;
@@ -17,7 +18,9 @@ public class CustomerDAOImpl implements CustomerDAO
 
 	
 	private SessionFactory sessionFactory;
-	
+
+	@Value("${pageSize:10}")
+	private int pageSize;
 	
 	@Autowired
 	public CustomerDAOImpl(SessionFactory sessionFactory)
