@@ -84,8 +84,12 @@ public class CustomerDAOImpl implements CustomerDAO
 	@Override
 	public List<Customer> getCustomersByPage(int pageNumber)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Query<Customer> query = getSession().createQuery("from Customer order by lastName", Customer.class);
+		query.setFirstResult((pageNumber-1) * pageSize);
+		query.setMaxResults(pageSize);
+				
+		return query.getResultList();
+				
 	}
 
 
