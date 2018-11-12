@@ -91,8 +91,9 @@ public class CustomerDAOImpl implements CustomerDAO
 	@Override
 	public long getCustomersCount()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		Query<Long> query = getSession().createQuery("select count(1) from Customer", Long.class);
+		
+		return query.getSingleResult().longValue();
 	}
 
 }
