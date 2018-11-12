@@ -75,4 +75,24 @@ public class CustomerDAOImpl implements CustomerDAO
 		query.executeUpdate();
 	}
 
+
+
+
+	@Override
+	public List<Customer> getCustomersByPage(int pageNumber)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	@Override
+	public long getCustomersCount()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
