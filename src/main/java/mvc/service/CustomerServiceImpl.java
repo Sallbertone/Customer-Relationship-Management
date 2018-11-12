@@ -69,4 +69,19 @@ public class CustomerServiceImpl implements CustomerService
 
 	}
 
+
+	@Override
+	public List<Customer> getCustomersByPage(int pageNumber)
+	{
+		return customerDAO.getCustomersByPage(pageNumber);
+	}
+
+
+	@Override
+	public long getCustomersCount()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
