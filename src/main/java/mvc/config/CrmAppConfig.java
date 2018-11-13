@@ -33,7 +33,7 @@ import mvc.converter.IdToLoyaltyProgramListConverter;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan({ "mvc" })
-@PropertySource({ "classpath:persistence-mysql.properties" })
+@PropertySource({ "classpath:persistence-mysql.properties", "classpath:app.properties" })
 public class CrmAppConfig implements WebMvcConfigurer
 {
 

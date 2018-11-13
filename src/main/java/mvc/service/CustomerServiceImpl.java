@@ -71,6 +71,7 @@ public class CustomerServiceImpl implements CustomerService
 
 
 	@Override
+	@Transactional
 	public List<Customer> getCustomersByPage(int pageNumber)
 	{
 		return customerDAO.getCustomersByPage(pageNumber);
@@ -78,6 +79,7 @@ public class CustomerServiceImpl implements CustomerService
 
 
 	@Override
+	@Transactional
 	public long getCustomersCount()
 	{
 		return customerDAO.getCustomersCount();
