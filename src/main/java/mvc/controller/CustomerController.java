@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +31,28 @@ public class CustomerController
 
 	@Autowired
 	LoyaltyProgramService loyaltyProgramService;
-
+	
+	@Value("${pageSize:10}")
+	private int pageSize;
+	
 	@GetMapping("/list")
-	public ModelAndView list()
+	public ModelAndView list(@RequestParam(name="pageNumber", required=false, defaultValue="1") int pageNumber)
 	{
-		List<Customer> customers = customerService.listAllCustomers();
-
-		return new ModelAndView("customer/list", "customers", customers);
+		ModelAndView model = new ModelAndView("customer/list");
+	
+		long totalCustomerCount = customerService.getCustomersCount();
+		
+		int totalPages = (int) Math.ceil(totalCustomerCount / (double)pageSize); 
+		
+		List<Customer> customers = customerService.getCustomersByPage(pageNumber);
+		
+		model.addObject("customers", customers);
+		model.addObject("totalCustomerCount", totalCustomerCount);
+		model.addObject("currentPage", pageNumber);
+		model.addObject("totalPages", totalPages);
+		model.addObject("pageSize", pageSize);
+		
+		return model;
 
 	}
 
