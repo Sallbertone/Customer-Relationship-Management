@@ -9,14 +9,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 <title>CRM System</title>
 </head>
 <body>
 
 
-<section id="viewtable">
-	
+	<section id="viewtable">
+
 	<div id="container">
 		<div id="content">
 
@@ -32,10 +33,22 @@
 
 				<c:forEach var="tempCustomer" items="${customers}">
 
+					<c:url var="updateLink" value="/customer/showUpdateForm">
+						<c:param name="customerId" value="${tempCustomer.id}" />
+					</c:url>
+
+					<c:url var="deleteLink" value="/customer/deleteCustomer">
+						<c:param name="customerId" value="${tempCustomer.id}" />
+					</c:url>
+
 					<tr>
 						<td>${tempCustomer.firstName}</td>
 						<td>${tempCustomer.lastName}</td>
 						<td>${tempCustomer.email}</td>
+						
+						<td><a href="${updateLink}">Edytuj</a>
+						 ||| 
+						<td><a href="${deleteLink}">Usuń</a>
 					</tr>
 
 				</c:forEach>
@@ -118,7 +131,7 @@
 		</c:choose>
 
 	</div>
-</section>
+	</section>
 
 
 
