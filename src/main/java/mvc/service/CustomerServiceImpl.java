@@ -80,8 +80,7 @@ public class CustomerServiceImpl implements CustomerService
 	@Override
 	public long getCustomersCount()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return customerDAO.getCustomersCount();
 	}
 
 }
