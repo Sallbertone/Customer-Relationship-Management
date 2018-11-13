@@ -88,6 +88,21 @@ public class CustomerController
 
 	}
 
+	
+	@GetMapping("/showUpdateForm")
+	public ModelAndView showUpdateForm(@RequestParam("customerId") int id)
+	{
+
+		ModelAndView model = new ModelAndView("customer/customer-form");
+
+		Customer customer = customerService.findCustomerById(id);
+		model.addObject("customer", customer);
+
+		
+		return model;
+
+	}
+	
 	@GetMapping("/deleteCustomer")
 	public String deleteCustomer(@RequestParam("customerId") int id)
 	{
