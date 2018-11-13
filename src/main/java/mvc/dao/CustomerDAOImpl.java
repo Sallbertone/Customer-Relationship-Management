@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import mvc.entity.Customer;
@@ -17,7 +18,9 @@ public class CustomerDAOImpl implements CustomerDAO
 
 	
 	private SessionFactory sessionFactory;
-	
+
+	@Value("${pageSize:10}")
+	private int pageSize;
 	
 	@Autowired
 	public CustomerDAOImpl(SessionFactory sessionFactory)
@@ -73,6 +76,31 @@ public class CustomerDAOImpl implements CustomerDAO
 		query.setParameter("theId", id);
 		
 		query.executeUpdate();
+	}
+
+
+
+
+	@Override
+	public List<Customer> getCustomersByPage(int pageNumber)
+	{
+		Query<Customer> query = getSession().createQuery("from Customer order by lastName", Customer.class);
+		query.setFirstResult((pageNumber-1) * pageSize);
+		query.setMaxResults(pageSize);
+				
+		return query.getResultList();
+				
+	}
+
+
+
+
+	@Override
+	public long getCustomersCount()
+	{
+		Query<Long> query = getSession().createQuery("select count(1) from Customer", Long.class);
+		
+		return query.getSingleResult().longValue();
 	}
 
 }

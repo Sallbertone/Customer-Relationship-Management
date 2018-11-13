@@ -15,6 +15,9 @@ public interface CustomerDAO
 	public void findCustomerById(int id);
 	
 	public void deleteCustomer(int id);
+
+	public List<Customer> getCustomersByPage(int pageNumber);
 	
+	public long getCustomersCount();
 	
 }
