@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import mvc.entity.AccountManager;
 import mvc.entity.Customer;
 
 
@@ -62,9 +63,9 @@ public class CustomerDAOImpl implements CustomerDAO
 	}
 
 	@Override
-	public void findCustomerById(int id)
+	public Customer findCustomerById(int id)
 	{
-		// TODO Auto-generated method stub
+		return getSession().get(Customer.class, id);
 	
 	}
 

@@ -12,7 +12,7 @@ public interface CustomerService
 	
 	public List<Customer> findCustomers(String text);
 	
-	public void findCustomerById(int id);
+	public Customer findCustomerById(int id);
 	
 	public void deleteCustomer(int id);
 	

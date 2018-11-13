@@ -14,13 +14,10 @@ public class CustomerServiceImpl implements CustomerService
 {
 
 	private CustomerDAO customerDAO;
-	
-	
-	
+
 	public CustomerServiceImpl()
 	{
 	}
-
 
 	@Autowired
 	public CustomerServiceImpl(CustomerDAO customerDAO)
@@ -28,7 +25,6 @@ public class CustomerServiceImpl implements CustomerService
 		this.customerDAO = customerDAO;
 	}
 
-	
 	@Override
 	@Transactional
 	public List<Customer> listAllCustomers()
@@ -36,7 +32,6 @@ public class CustomerServiceImpl implements CustomerService
 		return customerDAO.listAllCustomers();
 	}
 
-	
 	@Override
 	@Transactional
 	public void saveOrUpdateCustomer(Customer customer)
@@ -55,9 +50,9 @@ public class CustomerServiceImpl implements CustomerService
 
 	@Override
 	@Transactional
-	public void findCustomerById(int id)
+	public Customer findCustomerById(int id)
 	{
-		// TODO Auto-generated method stub
+		return customerDAO.findCustomerById(id);
 
 	}
 
@@ -69,14 +64,12 @@ public class CustomerServiceImpl implements CustomerService
 
 	}
 
-
 	@Override
 	@Transactional
 	public List<Customer> getCustomersByPage(int pageNumber)
 	{
 		return customerDAO.getCustomersByPage(pageNumber);
 	}
-
 
 	@Override
 	@Transactional
