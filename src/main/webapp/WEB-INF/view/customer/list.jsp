@@ -9,15 +9,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
 <title>CRM System</title>
 </head>
 <body>
 
 
-	<section id="viewtable">
-	<div class="container">
-		<div id="result">
+<section id="viewtable">
+	
+	<div id="container">
+		<div id="content">
 
 			<input type="button" value="Dodaj klienta"
 				onclick="window.location.href='showAddForm'" /> <br> <br>
@@ -117,7 +118,7 @@
 		</c:choose>
 
 	</div>
-	</section>
+</section>
 
 
 
