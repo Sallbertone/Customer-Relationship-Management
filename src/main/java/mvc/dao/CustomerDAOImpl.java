@@ -65,7 +65,10 @@ public class CustomerDAOImpl implements CustomerDAO
 	@Override
 	public Customer findCustomerById(int id)
 	{
-		return getSession().get(Customer.class, id);
+		Query<Customer> query = getSession().createQuery("select c from Customer c JOIN FETCH c.programs where c.id=:theId", Customer.class);
+		query.setParameter("theId", id);
+		
+		return query.getSingleResult();
 	
 	}
 
