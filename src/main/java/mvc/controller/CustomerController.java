@@ -1,8 +1,14 @@
 package mvc.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.entity.Customer;
+import mvc.entity.LoyaltyProgram;
 import mvc.service.AccountManagerService;
 import mvc.service.CustomerService;
 import mvc.service.LoyaltyProgramService;
@@ -98,6 +105,21 @@ public class CustomerController
 		Customer customer = customerService.findCustomerById(id);
 		model.addObject("customer", customer);
 
+		int accountManagerId = customer.getAccountManager().getId();
+		model.addObject("accountManagerId", accountManagerId);
+		
+		List<Integer> programsIDs = new ArrayList<>();
+		List<LoyaltyProgram> customerPrograms = customer.getPrograms();
+		programsIDs = customerPrograms.stream().map(p -> p.getId()).collect(Collectors.toList());
+		model.addObject("programsIDs", programsIDs);
+
+		Map<Integer, String> accountManagersMap = new HashMap<>();
+		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
+		model.addObject("accountManagersMap", accountManagersMap);
+
+		Map<Integer, String> loyaltyProgramsMap = new HashMap<>();
+		loyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
+		model.addObject("loyaltyProgramsMap", loyaltyProgramsMap);
 		
 		return model;
 
