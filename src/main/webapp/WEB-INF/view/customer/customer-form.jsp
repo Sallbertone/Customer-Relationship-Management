@@ -20,9 +20,11 @@
 		<div id="result">
 
 
-<!--   change GET to POST after testing  -->
+			<!--   change GET to POST after testing  -->
 			<form:form action="confirmCustomer" modelAttribute="customer"	method="GET">
 
+				<form:hidden path="id" />
+				
 				<table>
 					<tbody>
 						<tr>
@@ -45,32 +47,47 @@
 							<td><label>Telefon:</label></td>
 							<td><form:input path="customerDetail.phoneNumber" /></td>
 						</tr>
-						
- 					
+
+
 						<tr>
 							<td><label>Data urodzenia:</label></td>
 							<td><form:input path="customerDetail.dateOfBirth" /></td>
 						</tr>
 
-						
- 						<tr>
+
+						<tr>
 							<td><label>Opiekun klienta:</label></td>
 							<td><form:select path="accountManager">
 									
-									<form:options items="${accountManagersMap}" />
+									<c:choose>
+										<c:when test="${customer.accountManager.id >= 1}">
+											<form:option selected="true"
+												value="${customer.accountManager.id}"
+												label="${customer.accountManager.firstName} ${customer.accountManager.lastName}" />
+											<form:options items="${accountManagersMap}" />
+										</c:when>
+
+										<c:otherwise>
+											<form:option value="" label="--- Wybierz ---" />
+											<form:options items="${accountManagersMap}" />
+										</c:otherwise>
+
+									</c:choose>
 								</form:select></td>
 						</tr>
-						
+
+
 						<tr>
 							<td><label>Program lojalnościowy:</label></td>
-							<td><form:checkboxes path="programs" items="${loyaltyProgramsMap}"/></td>
+							<td><form:checkboxes path="programs"
+									items="${loyaltyProgramsMap}" /></td>
 						</tr>
 
 
 					</tbody>
 				</table>
 
-				<input type="submit" value="Dodaj" />
+				<input type="submit" value="Zapisz" />
 
 			</form:form>
 
