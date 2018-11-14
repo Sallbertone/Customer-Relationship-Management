@@ -34,27 +34,27 @@ public class CustomerController
 
 	@Autowired
 	LoyaltyProgramService loyaltyProgramService;
-	
+
 	@Value("${pageSize:10}")
 	private int pageSize;
-	
+
 	@GetMapping("/list")
-	public ModelAndView list(@RequestParam(name="pageNumber", required=false, defaultValue="1") int pageNumber)
+	public ModelAndView list(@RequestParam(name = "pageNumber", required = false, defaultValue = "1") int pageNumber)
 	{
 		ModelAndView model = new ModelAndView("customer/list");
-	
+
 		long totalCustomerCount = customerService.getCustomersCount();
-		
-		int totalPages = (int) Math.ceil(totalCustomerCount / (double)pageSize); 
-		
+
+		int totalPages = (int) Math.ceil(totalCustomerCount / (double) pageSize);
+
 		List<Customer> customers = customerService.getCustomersByPage(pageNumber);
-		
+
 		model.addObject("customers", customers);
 		model.addObject("totalCustomerCount", totalCustomerCount);
 		model.addObject("currentPage", pageNumber);
 		model.addObject("totalPages", totalPages);
 		model.addObject("pageSize", pageSize);
-		
+
 		return model;
 
 	}
@@ -83,6 +83,7 @@ public class CustomerController
 	@GetMapping("/confirmCustomer")
 	public ModelAndView saveAndConfirmCustomer(@ModelAttribute("customer") Customer customer, BindingResult result)
 	{
+
 		ModelAndView model = new ModelAndView("customer/confirm-customer");
 
 		customerService.saveOrUpdateCustomer(customer);
@@ -91,7 +92,6 @@ public class CustomerController
 
 	}
 
-	
 	@GetMapping("/showUpdateForm")
 	public ModelAndView showUpdateForm(@RequestParam("customerId") int id)
 	{
@@ -103,7 +103,7 @@ public class CustomerController
 
 		int accountManagerId = customer.getAccountManager().getId();
 		model.addObject("accountManagerId", accountManagerId);
-		
+
 		List<Integer> programsIDs = new ArrayList<>();
 		List<LoyaltyProgram> customerPrograms = customer.getPrograms();
 		programsIDs = customerPrograms.stream().map(p -> p.getId()).collect(Collectors.toList());
@@ -111,16 +111,17 @@ public class CustomerController
 
 		Map<Integer, String> accountManagersMap = new HashMap<>();
 		accountManagersMap = accountManagerService.mapAllAccountManagersIdAndFullNames();
+		accountManagersMap.remove(accountManagerId);
 		model.addObject("accountManagersMap", accountManagersMap);
 
 		Map<Integer, String> loyaltyProgramsMap = new HashMap<>();
 		loyaltyProgramsMap = loyaltyProgramService.mapAllLoyaltyProgramsIdAndTitles();
 		model.addObject("loyaltyProgramsMap", loyaltyProgramsMap);
-		
+
 		return model;
 
 	}
-	
+
 	@GetMapping("/deleteCustomer")
 	public String deleteCustomer(@RequestParam("customerId") int id)
 	{
