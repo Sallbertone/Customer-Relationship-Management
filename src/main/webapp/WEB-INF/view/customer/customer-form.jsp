@@ -56,7 +56,7 @@
  						<tr>
 							<td><label>Opiekun klienta:</label></td>
 							<td><form:select path="accountManager">
-									<form:option value="NONE" label="--- Wybierz ---" />
+									
 									<form:options items="${accountManagersMap}" />
 								</form:select></td>
 						</tr>
