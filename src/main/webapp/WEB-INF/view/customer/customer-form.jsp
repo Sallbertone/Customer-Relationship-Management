@@ -32,15 +32,18 @@
 					<tbody>
 						<tr>
 							<td><label>Imię:</label></td>
-							<td><form:input path="firstName" /></td>
+							<td><form:input path="firstName" />
+								<form:errors path="firstName"/></td>
 						</tr>
 						<tr>
 							<td><label>Nazwisko:</label></td>
-							<td><form:input path="lastName" /></td>
+							<td><form:input path="lastName" />
+								<form:errors path="lastName"/></td>
 						</tr>
 						<tr>
 							<td><label>E-mail:</label></td>
-							<td><form:input path="email" /></td>
+							<td><form:input path="email" />
+								<form:errors path="email"/></td>
 						</tr>
 						<tr>
 							<td><label>Miasto:</label></td>
@@ -76,7 +79,8 @@
 										</c:otherwise>
 
 									</c:choose>
-								</form:select></td>
+								</form:select>
+								<form:errors path="accountManager"/></td>
 						</tr>
 
 
