@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,14 +84,21 @@ public class CustomerController
 	}
 
 	@GetMapping("/confirmCustomer")
-	public ModelAndView saveAndConfirmCustomer(@ModelAttribute("customer") Customer customer, BindingResult result)
+	public String saveAndConfirmCustomer( @ModelAttribute("customer") Customer customer, BindingResult result)
 	{
 
-		ModelAndView model = new ModelAndView("customer/confirm-customer");
+		//ModelAndView model = new ModelAndView("customer/confirm-customer");
 
+//		if(result.hasErrors())
+//		{
+//			model.setViewName("customer/customer-form");
+//			model.addAllObjects(result.getModel());
+//			return model;
+//		}
+		
 		customerService.saveOrUpdateCustomer(customer);
 
-		return model;
+		return "customer/confirm-customer";
 
 	}
 
