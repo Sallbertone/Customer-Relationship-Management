@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name="customer")
@@ -26,20 +29,27 @@ public class Customer
 	private int id;
 	
 	@Column(name="first_name")
+//	@NotNull
+//	@Size(min=1, message="*pole wymagane*")
 	private String firstName;
 	
 	@Column(name="last_name")
+//	@NotNull
+//	@Size(min=1, message="*pole wymagane*")
 	private String lastName;
 	
 	@Column(name="email")
+//	@NotNull
+//	@Size(min=8, message="*pole wymagane*")
 	private String email;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="customer_detail_id")
 	private CustomerDetail customerDetail;
 	
 	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name="account_manager_id")
+//	@NotNull(message="*pole wymagane*")
 	private AccountManager accountManager;
 	
 	@ManyToMany(fetch= FetchType.EAGER, cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})

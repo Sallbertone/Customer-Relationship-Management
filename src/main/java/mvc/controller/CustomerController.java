@@ -86,16 +86,6 @@ public class CustomerController
 	@GetMapping("/confirmCustomer")
 	public String saveAndConfirmCustomer( @ModelAttribute("customer") Customer customer, BindingResult result)
 	{
-
-		//ModelAndView model = new ModelAndView("customer/confirm-customer");
-
-//		if(result.hasErrors())
-//		{
-//			model.setViewName("customer/customer-form");
-//			model.addAllObjects(result.getModel());
-//			return model;
-//		}
-		
 		customerService.saveOrUpdateCustomer(customer);
 
 		return "customer/confirm-customer";

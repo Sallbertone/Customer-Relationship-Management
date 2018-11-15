@@ -33,8 +33,8 @@ public class CustomerDetail
 	
 	@Column(name="city")
 	private String city;
-	
-	@OneToOne(mappedBy="customerDetail", cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+
+	@OneToOne(mappedBy="customerDetail")
 	private Customer customer;
 	
 	public CustomerDetail()
