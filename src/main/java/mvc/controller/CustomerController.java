@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -101,7 +102,15 @@ public class CustomerController
 		Customer customer = customerService.findCustomerById(id);
 		model.addObject("customer", customer);
 
-		int accountManagerId = customer.getAccountManager().getId();
+		int accountManagerId;
+		try
+		{
+			accountManagerId = customer.getAccountManager().getId();
+		} catch (NullPointerException e)
+		{
+			accountManagerId = 0;
+		}
+		
 		model.addObject("accountManagerId", accountManagerId);
 
 		List<Integer> programsIDs = new ArrayList<>();
