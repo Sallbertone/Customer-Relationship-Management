@@ -8,15 +8,19 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -26,8 +30,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import mvc.converter.IdToAccountManagerConverter;
-import mvc.converter.OlyOneIdToLoyaltyProgramListConverter;
 import mvc.converter.IdToLoyaltyProgramListConverter;
+import mvc.converter.OlyOneIdToLoyaltyProgramListConverter;
 
 @Configuration
 @EnableWebMvc
@@ -159,6 +163,20 @@ public class CrmAppConfig implements WebMvcConfigurer
         registry.addConverter(idToAccountManagerConverter);
         registry.addConverter(idToLoyaltyProgramListConverter);
         registry.addConverter(olyOneIdToLoyaltyProgramListConverter);
+    }
+    
+    @Override
+    public Validator getValidator() {
+        LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
+        validator.setValidationMessageSource(messageSource());
+        return validator;
+    }
+    
+    @Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        return messageSource;
     }
 
 }
